@@ -46,13 +46,13 @@ class AboutPageTests(TestCase):
         # Check if in the about page is there - and contains the specified message
         # Exercise from Chapter 4
         response = self.client.get(reverse('about'))
-        self.assertIn(b'This tutorial has been put together by', response.content)
+        self.assertIn('This tutorial has been put together by'.lower(), response.content.decode('ascii').lower())
 
     def test_about_contain_image(self):
         # Check if is there an image on the about page
         # Chapter 4
         response = self.client.get(reverse('about'))
-        self.assertIn(b'img src="/media/', response.content)
+        self.assertIn('img src="/media/'.lower(), response.content.decode('ascii').lower())
 
     def test_about_using_template(self):
         # Check the template used to render index page
@@ -177,65 +177,65 @@ class Chapter5ViewTests(TestCase):
         self.assertIn('url', PageAdmin.list_display)
 
 
-class Chapter6ViewTests(TestCase):
-
-    def setUp(self):
-        try:
-            from populate_rango import populate
-            populate()
-        except ImportError:
-            print('The module populate_rango does not exist')
-        except NameError:
-            print('The function populate() does not exist or is not correct')
-        except:
-            print('Something went wrong in the populate() function :-(')
-
-    # are categories displayed on index page?
-
-    # does the category model have a slug field?
-
-    # test the slug field works..
-    def test_does_slug_field_work(self):
-        from rango.models import Category
-        cat = Category(name='how do i create a slug in django')
-        cat.save()
-        self.assertEqual(cat.slug, 'how-do-i-create-a-slug-in-django')
-
-    # test category view does the page exist?
-
-    # test whether you can navigate from index to a category page
-
-    # test does index page contain top five pages?
-
-    # test does index page contain the words "most liked" and "most viewed"
-
-    # test does category page contain a link back to index page?
-
-
-class Chapter7ViewTests(TestCase):
-
-    def setUp(self):
-        try:
-            from forms import PageForm
-            from forms import CategoryForm
-
-        except ImportError:
-            print('The module forms does not exist')
-        except NameError:
-            print('The class PageForm does not exist or is not correct')
-        except:
-            print('Something else went wrong :-(')
-
-    pass
-    # test is there a PageForm in rango.forms
-
-    # test is there a CategoryForm in rango.forms
-
-    # test is there an add page page?
-
-    # test is there an category page?
-
-    # test if index contains link to add category page
-    # <a href="/rango/add_category/">Add a New Category</a><br />
-
-    # test if the add_page.html template exists.
+# class Chapter6ViewTests(TestCase):
+#
+#     def setUp(self):
+#         try:
+#             from populate_rango import populate
+#             populate()
+#         except ImportError:
+#             print('The module populate_rango does not exist')
+#         except NameError:
+#             print('The function populate() does not exist or is not correct')
+#         except:
+#             print('Something went wrong in the populate() function :-(')
+#
+#     # are categories displayed on index page?
+#
+#     # does the category model have a slug field?
+#
+#     # test the slug field works..
+#     def test_does_slug_field_work(self):
+#         from rango.models import Category
+#         cat = Category(name='how do i create a slug in django')
+#         cat.save()
+#         self.assertEqual(cat.slug, 'how-do-i-create-a-slug-in-django')
+#
+#     # test category view does the page exist?
+#
+#     # test whether you can navigate from index to a category page
+#
+#     # test does index page contain top five pages?
+#
+#     # test does index page contain the words "most liked" and "most viewed"
+#
+#     # test does category page contain a link back to index page?
+#
+#
+# class Chapter7ViewTests(TestCase):
+#
+#     def setUp(self):
+#         try:
+#             from forms import PageForm
+#             from forms import CategoryForm
+#
+#         except ImportError:
+#             print('The module forms does not exist')
+#         except NameError:
+#             print('The class PageForm does not exist or is not correct')
+#         except:
+#             print('Something else went wrong :-(')
+#
+#     pass
+#     # test is there a PageForm in rango.forms
+#
+#     # test is there a CategoryForm in rango.forms
+#
+#     # test is there an add page page?
+#
+#     # test is there an category page?
+#
+#     # test if index contains link to add category page
+#     # <a href="/rango/add_category/">Add a New Category</a><br />
+#
+#     # test if the add_page.html template exists.
