@@ -10,6 +10,9 @@ About
     <div>
         here is the about page<br/>
         This tutorial has been put together by Sotiris Michael.
+        {% if visits %}
+        <h4>You have visited the site {{ visits }} times.</h4>
+        {% endif %}
         <strong>{{ boldmessage }}</strong><br/>
         <img src="{{ MEDIA_URL}}cat.jpg"
              alt="Picture of Cat"/> <!-- New line --><br>
