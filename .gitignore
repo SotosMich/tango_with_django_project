@@ -1,7 +1,11 @@
 db.sqlite3
+chromedriver.exe
 __pycache__/
 *.
 *.pyc
 .idea/
+rango/tests_*.py
+rango/test_utils.py
+rango/decorators.py
 rango/__pycache__/
 tango_with_django_project/__pycache__/
